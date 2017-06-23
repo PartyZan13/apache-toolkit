@@ -34,8 +34,8 @@ fi;
 # Sites path
 www_path="$DIR_HOSTS/hosts"
 
-# folder with html files
-public_html="public_html"
+# folder with html files, eidted by proezdov
+public_html="$1"
 
 host_path="$www_path/$1"
 
@@ -60,15 +60,14 @@ sudo chown "$HOST_OWN" "$host_path/$public_html";
 echo "* Host directory: $host_path";
 echo "* Documents root: '$host_path/$public_html'";
 # Test index.php
-echo '<?php phpinfo(); ?>' > "$host_path/$public_html/index.php";
+#echo '<?php phpinfo(); ?>' > "$host_path/$public_html/index.php";
 
-# Change owner of test index.php from root to the user
-sudo chown "$HOST_OWN" "$host_path/$public_html/index.php";
-# Add DNS record to the system /etc/hosts file, for access to created host via  its name
+#Added by Proezdov
+#sudo chown "$HOST_OWN" "$host_path/$public_html/index.php";
 sudo echo "127.0.0.1 $1" >> /etc/hosts;
 
 # Create config
-sudo cp "$SCRIPTPATH/example.conf" "$conf_file";
+sudo cp "$SCRIPTPATH/example-yii2.conf" "$conf_file";
 
 function repl_args {
   sed -i -e "s#%$1%#$2#g" "$conf_file";
@@ -85,4 +84,6 @@ sudo a2ensite "$1" >/dev/null 2>&1;
 echo "* Host config: $conf_file";
 echo "Configuration and directory for host '$1' were created successfuly";
 echo "To edit configuration, run 'edit-host $1'";
-echo "To apply changes, run 'sudo apachectl restart'";
+echo "Trying Apache restart";
+sudo apachectl restart;
+echo "Please check the result.";

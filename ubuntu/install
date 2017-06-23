@@ -17,7 +17,7 @@ REST_CONF='/etc/httpd';
 APP_CLI_PATH='/etc/apache-cli';
 
 # Product name
-APP_CLI_NAME='Apache Toolkit';
+APP_CLI_NAME='Apache Toolkit Plus Yii2';
 
 # App conf file name
 APP_CONF_NAME='config.sh';
@@ -281,6 +281,7 @@ installNow() {
   chmodBins;
 
   smlink 'create-host';
+  smlink 'create-host-yii2';
   smlink 'delete-host';
   smlink 'edit-host';
   smlink 'apache-cli-remove';
@@ -353,6 +354,7 @@ install_finish_lol() {
   echo "";
   echo "Here is available tools list:";
   echo "'create-host'         - Create a new virtual host";
+  echo "'create-host-yii2'    - Create a new virtual host for Yii2 projects";
   echo "'delete-host'         - Remove a virtual host";
   echo "'edit-host'           - Edit configuration for the host";
   echo "'apache-cli-remove'   - Uninstall $APP_CLI_NAME";

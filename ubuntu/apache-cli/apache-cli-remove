@@ -24,6 +24,7 @@ x_cli_uninstall() {
   rm_masq;
 
   x_rm_bin 'create-host';
+  x_rm_bin 'create-host-yii2';
   x_rm_bin 'delete-host';
   x_rm_bin 'edit-host';
   x_rm_bin 'apache-cli-remove';
