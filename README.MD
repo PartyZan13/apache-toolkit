@@ -2,11 +2,21 @@
 
 This toolkit is designed to make virtual host management more easier from command line.
 
+## differences from original Apache Toolkit
+`create-host-yii2` command will create virtual host folder structure:
+hosts\
+     - site.com\
+	           - site.com\
+			              (put here yii2 files, composer.json, `web` folder, etc)
+			   - error.log
+			   - requests.log
+Document root wil be set to the `hosts\site.com\site.com\web folder`, Pretty URLs are set `On`
+
 ## What's inside
-This toolkit contains 3 utilites (use it with sudo):
+This toolkit contains 3 utilites (use it with `sudo`):
 * `create-host` - Create a new virtual host (it will prepare all config's and folder)
-* `create-host-yii2` - Create a new virtual host (it will prepare all config's and folder, add records to the /etc/hosts file) **!!Only for Ubuntu, yet!!**
-* `delete-host` - Delete a virtual host (including files and config and, **for Ubuntu**, delete previously generated records from the /etc/hosts file)
+* `create-host-yii2` - Create a new virtual host (it will prepare all config's and folder, add records to the **/etc/hosts** file) **Only for Ubuntu, yet**
+* `delete-host` - Delete a virtual host (including files and config and, **for Ubuntu**, delete previously generated records from the **/etc/hosts** file)
 * `edit-host` - Edit host's configuration in VIM.
 
 ## Features
@@ -18,15 +28,15 @@ This toolkit contains 3 utilites (use it with sudo):
 ## Installation
 * Clone this repo or go to releases tab and download suitable version.
 * Open nessesary distributive folder
-* Run `install` file (from your user, not root or sudo) and follow instructions on screen.
+* Run `install` file (from your user, not `root` or `sudo`) and follow instructions on screen.
 
 ## Builds
 * **ubuntu** - Release for all Ubuntu-based products. Updated for Yii2 framework support
-* **linux-common** - Rest Linux systems, include only common stuff. (not apdated)
+* **linux-common** - Rest Linux systems, include only common stuff. (not updated)
 * **darwin** - nope
 
 ## Support
-* Ubuntu      - Supported. (and have )
+* Ubuntu      - Supported.
 * Debian      - Experimental, may work with ubuntu's package.
 * RHEL/CentOS - Supported.
 * Darwin/OSX  - nope 
@@ -36,7 +46,7 @@ This toolkit contains 3 utilites (use it with sudo):
 ### Create virtual hosts
 To create virtual host, just run `sudo create-host site.com`.
 Tool will create and enable config file and directory for the site.
-(for Ubuntu) Tool will add `127.0.0.1 site.com` records to the **/etc/hosts** file
+**(for Ubuntu)** Tool will add `127.0.0.1 site.com` records to the **/etc/hosts** file
 
 ### Create virtual hosts for Yii2 Framework (for Ubuntu)
 To create virtual host for yii2, just run `sudo create-host-yii2 site.com`.
