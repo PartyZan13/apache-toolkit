@@ -4,16 +4,19 @@ This toolkit is designed to make virtual host management more easier from comman
 
 ## differences from original Apache Toolkit
 `create-host-yii2` command will create virtual host folder structure:
-hosts\
-     - site.com\
-	           - site.com\
-			              (put here yii2 files, composer.json, `web` folder, etc)
-			   - error.log
-			   - requests.log
+
++ hosts
+  - site.com
+    * site.com
+        + put here yii2 files, composer.json, `web` folder, etc
+  - error.log
+  - requests.log
+
 Document root wil be set to the `hosts\site.com\site.com\web folder`, Pretty URLs are set `On`
 
 ## What's inside
 This toolkit contains 3 utilites (use it with `sudo`):
+
 * `create-host` - Create a new virtual host (it will prepare all config's and folder)
 * `create-host-yii2` - Create a new virtual host (it will prepare all config's and folder, add records to the **/etc/hosts** file) **Only for Ubuntu, yet**
 * `delete-host` - Delete a virtual host (including files and config and, **for Ubuntu**, delete previously generated records from the **/etc/hosts** file)
@@ -54,7 +57,7 @@ Tool will create and enable config file and directory for the site and will add 
 Also Apache will be auto restarted.
 
 
-### Delete vitrual hosts
+### Delete virtual hosts
 To edit host, use `sudo delete-host site.com`.
 Also you will be prompted if you want to delete a host directory.
 For Ubuntu this command will try to delete previously generated `127.0.0.1 site.com` records from the **/etc/hosts** file
